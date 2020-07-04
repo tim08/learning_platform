@@ -15,6 +15,7 @@ class TrainingGroup < ApplicationRecord
 
   def join_student(email)
     # TODO: mb collection.create(attributes = {})?
+    # может ли студент записываться в группу если он уже записн в другую группу которая пересекается с текущей?
     student = Student.find_or_create_by(email: email)
     if student.invalid?
       student.errors.full_messages.each do |message|
@@ -23,6 +24,22 @@ class TrainingGroup < ApplicationRecord
       return false
     end
 
+    # может ли студент записываться в группу которая уже идет?
+    if start_date < Date.current
+      # если курс ещё идет или уже закончился
+      if end_date >= Date.current
+        # если по требованиям можно записаться в группу которая уже идет убираем это условие
+        errors.add(self.class.to_s, "is already on")
+        return false
+      else
+        # в группу что уже закончилась точно нельзя записаться
+        # TODO: убрать кнокпу записи на фронте
+        errors.add(self.class.to_s, "is already over")
+        return false
+      end
+    end
+
+    # уже записан
     if students.include?(student)
       errors.add(:student, "with email #{email} already joined")
       false
