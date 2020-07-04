@@ -1,0 +1,20 @@
+<h1>Courses</h1>
+<table border="1">
+  <thead>
+<!--  название курса, ближайшая дата, количество студентов-->
+    <tr>
+      <th>Name</th>
+      <th>Nearest start date</th>
+      <th>Number of students</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= link_to course.name, course_path(course) %></td>
+      <td><%= course.nearest_training_date %></td>
+      <td><%= course.nearest_training_students_number %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

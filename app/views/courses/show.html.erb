@@ -1,0 +1,20 @@
+<h1><%= @course.name %></h1>
+<p id="notice"><%= notice %></p>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Dates</th>
+    <th>Students</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @course.training_groups.each do |training_group| %>
+    <tr>
+      <td><%= training_group.dates %></td>
+      <td><%= render partial: "students", locals: {training_group: training_group}%></td>
+      <td><%= link_to 'Join', add_new_student_course_training_group_path(@course,training_group) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

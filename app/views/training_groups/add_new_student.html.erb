@@ -1,0 +1,16 @@
+<h1>Join student to <%= @training_group.course.name %></h1>
+<p>Dates: <%= @training_group.dates %></p>
+
+<% if @training_group.errors.any? %>
+    <ul>
+      <% @training_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @training_group, url: join_course_training_group_path, local: true do |form|%>
+  <%= form.label(:email, "enter your email address:") %>
+  <%= form.email_field(:email) %>
+  <%= form.submit "Join"%>
+<% end %>
