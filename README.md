@@ -1,24 +1,14 @@
-# README
+**Модель обучающей площадки**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ На площадке есть курсы. По курсам с определенной периодичностью набираются группы студентов. Для того чтобы пройти курс, пользователь сначала выбирает группу и записывается в нее.
+ 
+Нужно реализовать: - Индексную страницу со списком курсов и возможностью отсортировать их по ближайшей дате занятий (дата старта занятий в группе). Должен получиться список вида: название курса, ближайшая дата, количество студентов. - Страницу курса, на которой можно посмотреть все предстоящие группы со списками студентов, а так же записаться в группу.
+ 
+Интерфейс для простоты сделать нестилизованным html, а запись в группу, например, путем указания email (не используйте devise, это лишнее). Предзаполнить базу несколькими тестовыми курасами и группами. Предусмотреть возможные ошибки.
 
-Things you may want to cover:
+**Демо:** https://pacific-lowlands-65517.herokuapp.com/
 
-* Ruby version
+**Админка:** https://pacific-lowlands-65517.herokuapp.com/admin/courses
 
-* System dependencies
+Систем-тесты просмотра курсов и записи в группу: `bin/rails test:system test`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
