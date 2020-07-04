@@ -1,10 +1,9 @@
 <h1>Courses</h1>
 <table border="1">
   <thead>
-<!--  название курса, ближайшая дата, количество студентов-->
     <tr>
       <th>Name</th>
-      <th>Nearest start date</th>
+      <th><%= link_to "Nearest start date", {sort_by_nearest_start_date: true}%></th>
       <th>Number of students</th>
     </tr>
   </thead>

@@ -15,4 +15,10 @@ class Course < ApplicationRecord
       nearest_training.students.count
     end
   end
+
+  def self.all_with_sort_by_start_date(params)
+    params[:sort_by_nearest_start_date].present? ?
+        Course.includes(:training_groups).joins(:training_groups).merge(TrainingGroup.active_and_order_by_start_date).uniq :
+        Course.includes(:training_groups).all
+  end
 end
